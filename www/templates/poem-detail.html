@@ -4,10 +4,34 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="{{poem.title}}">
-  <ion-content class="padding">
-    <p>
-      {{poem.content}}
-    </p>
+<ion-view>
+  <ion-nav-bar class="bar-stable">
+
+    <ion-nav-buttons side="left" class="button button-clear">
+      <button class="button button-small button-clear" ng-click="goback()"><i class="icon ion-ios-arrow-left"></i>
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-nav-title>
+    <div class="title title-center header-item" style="font-family: Jerry-Bold">
+      {{poem.title}}
+    </div>
+  </ion-nav-title>
+  <ion-content>
+    <div class="padding">
+      <p style="font-family: Jerry-Fangzheng; text-align: center; font-size: 1.1em" ng-repeat="sen in sentances">
+        {{sen}}
+      </p>
+    </div>
+    <div class="item-divider-ios product-detail-divider">作者</div>
+    <div class="padding" style="font-family: Jerry-Fangzheng; font-size: 0.8em">
+      <p>
+        <img ng-if="poem.author.avatarFileName" ng-src="img/{{poem.author.avatarFileName}}" class="avatar-detail">
+        <img ng-if="!poem.author.avatarFileName" ng-src="img/default-avatar.png" class="avatar-detail">
+
+        {{poem.author.description}}
+      </p>
+    </div>
   </ion-content>
 </ion-view>

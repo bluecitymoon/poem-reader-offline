@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.complexlisttestapp950464" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ionicframework.complexlisttestapp950464" version="0.0.1" xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>蝌蚪诗文</name>
   <description>
-        古诗文离线版
-    </description>
+    古诗文离线版
+  </description>
   <author email="leeming.jiang@gmail.com" href="http://example.com.com/">
-      Jerry Jiang
-    </author>
+    Jerry Jiang
+  </author>
   <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>

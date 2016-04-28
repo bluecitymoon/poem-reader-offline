@@ -1,1 +1,27 @@
-/* Empty. Add your own CSS if you like */
+
+.product-detail-divider {
+  padding-top: 15px !important;
+  border-bottom: 1px solid #e1e1e1;
+  border-top: 1px solid #e1e1e1;
+  padding-left: 1em;
+}
+
+.avatar-detail {
+  max-width: 50px;
+  height: auto;
+  width: 100%;
+  border-radius: 8px;
+  float: left;
+  margin: 6px 15px 0px 0px;
+}
+
+.avatar-text {
+  padding: 0 0 0 75px; /* 75px being the width of the thumbnail + how much space you want to put between it and your text */
+  position: relative; /* So the thumbnail is relative to this */
+}
+
+.avatar-text img {
+  left: 0;
+  position: absolute;
+  top: 0;
+}

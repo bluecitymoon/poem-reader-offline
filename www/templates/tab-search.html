@@ -1,8 +1,17 @@
-<ion-view view-title="文库">
+<ion-view>
+
+  <ion-nav-title>
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="诗文名称或拼音" ng-model="keyword.content" ng-change="search()" style="width: 100%">
+      </label>
+    </div>
+  </ion-nav-title>
 
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="poem in avaliablePoems"
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="poem in poems"
                 type="item-text-wrap"
                 ng-click="showSinglePoem(poem)">
         <img ng-if="poem.author.avatarFileName" ng-src="img/{{poem.author.avatarFileName}}">
@@ -18,8 +27,5 @@
         <!--</ion-option-button>-->
       </ion-item>
     </ion-list>
-
-    <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadNextPage()" immediate-check="false"
-                         distance="-10"></ion-infinite-scroll>
   </ion-content>
 </ion-view>

@@ -3,22 +3,44 @@ angular.module('starter.controllers', [])
   .controller('DashCtrl', function ($scope) {
   })
 
-  .controller('ChatsCtrl', function ($scope, Chats) {
-    // With the new view caching in Ionic, Controllers are only called
-    // when they are recreated or on app start, instead of every page change.
-    // To listen for when this page is active (for example, to refresh data),
-    // listen for the $ionicView.enter event:
-    //
-    //$scope.$on('$ionicView.enter', function(e) {
-    //});
+  .controller('SearchCtrl', function ($scope, PoemService, $state) {
 
-    $scope.chats = Chats.all();
-    $scope.remove = function (chat) {
-      Chats.remove(chat);
+    $scope.keyword = {content: ''};
+    $scope.search = function () {
+
+      if ($scope.keyword.content && $scope.keyword.content.length > 1) {
+
+        $scope.poems = [];
+        PoemService.readAllPoems().success(function (data) {
+
+          angular.forEach(data, function(value) {
+
+            var searchText = $scope.keyword.content;
+            if (value.titlePinyin.indexOf(searchText) > -1
+              || value.title.indexOf(searchText) > -1
+              || (value.anthorName && value.anthorName.indexOf(searchText) > -1)) {
+
+              $scope.poems.push(value);
+
+            }
+
+          });
+
+        });
+      }
+
+    };
+
+    $scope.showSinglePoem = function (poem) {
+
+      $state.go('single-book');
+
+      PoemService.setSelectedPoem(poem);
+
     };
   })
 
-  .controller('PoemCtrl', function ($scope, PoemService, $stateParams, $state, $rootScope) {
+  .controller('PoemCtrl', function ($scope, PoemService, $stateParams, $state) {
 
     $scope.poems = [];
 
@@ -59,17 +81,27 @@ angular.module('starter.controllers', [])
     $scope.showSinglePoem = function (poem) {
 
       $state.go('single-book');
+
       PoemService.setSelectedPoem(poem);
 
     };
 
   })
 
-  .controller('PoemDetailCtrl', function ($scope, PoemService, $timeout) {
+  .controller('PoemDetailCtrl', function ($scope, PoemService, $state, $ionicScrollDelegate) {
 
     $scope.$on('$ionicView.enter', function (e) {
       $scope.poem = PoemService.getSelectedPoem();
+
+      $scope.sentances = $scope.poem.content.split("。");
+
+      $ionicScrollDelegate.scrollTop();
     });
+
+    $scope.goback = function () {
+      $state.go('tab.book');
+    };
+
 
   })
 
