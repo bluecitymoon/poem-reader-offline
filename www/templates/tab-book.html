@@ -2,11 +2,11 @@
 
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="poem in avaliablePoems"
+      <ion-item class="item-dark item-avatar item-icon-right" ng-repeat="poem in avaliablePoems"
                 type="item-text-wrap"
                 ng-click="showSinglePoem(poem)">
-        <img ng-if="poem.author.avatarFileName" ng-src="img/{{poem.author.avatarFileName}}">
-        <img ng-if="!poem.author.avatarFileName" ng-src="img/default-avatar.png">
+        <img ng-if="poem.avatar" ng-src="img/{{poem.avatar}}">
+        <img ng-if="!poem.avatar" ng-src="img/default-avatar.png">
 
         <h2>{{poem.title}}</h2>
 
