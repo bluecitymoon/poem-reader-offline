@@ -93,7 +93,9 @@ angular.module('starter.controllers', [])
     $scope.$on('$ionicView.enter', function (e) {
       $scope.poem = PoemService.getSelectedPoem();
 
-      $scope.sentances = $scope.poem.content.split("。");
+      $scope.sentances = $scope.poem.content.split("。").join(",").split("，").join(",").split(",");
+
+      console.debug($scope.sentances);
 
       $ionicScrollDelegate.scrollTop();
     });
